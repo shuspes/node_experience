@@ -1,12 +1,12 @@
 const http = require("http");
-const url = require("url");
+const router = require("./router");
 
 const port = 3000;
 
 const onRequest = (request, response) => {
   console.log("server handled");
-  const requestedURL = url.parse(request.url);
-  console.log("requestedURL", requestedURL);
+  router.route(request);
+  
   response.writeHead(200, {"Content-Type": "text/plain"});
   response.write("Hello World");
   response.end();
